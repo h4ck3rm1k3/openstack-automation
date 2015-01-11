@@ -113,14 +113,14 @@ def find_free_spaces(min_disk_size=10, max_disk_size=None):
                     'start': _int_to_sector(start_sector_int),
                     'end': _int_to_sector(end_sector_int)}
         else:
-            LOG.error('space {0} less than minimum {0}'.format(
+            LOG.error('space {0} less than minimum {1}'.format(
                       disk_size_G, min_disk_size))
     LOG.error('No free space found')
 
 def _last_allocated_sector(part_data):
     last_allocated_sector = 2048
     for partition_id, partition_data in part_data.iteritems():
-        LOG.debug('checking partition {0} {0}'.format(
+        LOG.debug('checking partition {0} {1}'.format(
             partition_id, str(partition_data)))
         sector_end_in_int = _sector_to_int(partition_data['end'])
         if sector_end_in_int > last_allocated_sector:
